@@ -28,6 +28,6 @@ public class RouteServiceTest {
         BusStationShortRoute busStationShortRoute = service.verifyStationRoute("153", "140");
         String s = mapper.writeValueAsString(busStationShortRoute);
         System.out.println("s = " + s);
-        Assert.assertTrue(busStationShortRoute.getRouteId()>-1);
+        Assert.assertTrue(busStationShortRoute.getRouteId()!=null);
     }
 }

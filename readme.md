@@ -21,6 +21,31 @@ I really hope you all get a good glance at my test because I did try to do a goo
   I treat the station ID's as String because I thought this can be more flexible for futures changes.
 
 
+
+### Tips
+
+
+##### Running in dev mode
+
+  `
+  gradle bootRun
+  `
+  
+##### Running into others environments
+
+  `
+   java -jar build/libs/demo-0.0.1-SNAPSHOT.jar 
+                --server.port=8088 
+                --route.location.data=data/example $*
+  `
+##### Health
+  
+    (http://localhost:8088/api/health)
+[health](http://localhost:8088/api/health)
+
+
+
+
 ### Problem
 
 We are adding a new bus provider to our system. In order to implement a very

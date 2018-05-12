@@ -7,4 +7,4 @@ RUN apt-get -qq -y update && \
 WORKDIR /src
 ADD . .
 RUN ./service.sh dev_build
-CMD ["/src/service.sh", "dev_run", "data/example"]
+CMD ["/src/service.sh", "dev_run", " --route.location.data=data/example "]

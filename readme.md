@@ -1,5 +1,26 @@
 # Bus Route Challenge
 
+### Resolution
+
+Hello for everyone!
+
+This is my java test. I decide to use Spring boot 1.5.x just because it has more compatibility with swagger and others frameworks. 
+
+I'm using Hazelcast IMDG for handle all maps and whether you run another instance of this project, this 2nd instance will get all current information using IMDG. 
+I choose Undertown instead of Tomcat because of performance running into XIO.
+This project was documented using swagger with default configurations. I  have used Hystrix for a beautiful degradation concept
+
+**Technologies:** Spring boot 1.5.x, Junit, Hazelcast, Hystrix, Swagger2.
+
+I did the main question of this test and a did a plus task. I create another endpoint that you can see in the swagger doc.
+
+I really hope you all get a good glance at my test because I did try to do a good job and send before the deadline. I received this test on Friday morning and finish on Saturday morning.
+
+**Notice**
+  
+  I treat the station ID's as String because I thought this can be more flexible for futures changes.
+
+
 ### Problem
 
 We are adding a new bus provider to our system. In order to implement a very

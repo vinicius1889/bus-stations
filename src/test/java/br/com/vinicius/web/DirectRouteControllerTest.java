@@ -31,7 +31,7 @@ public class DirectRouteControllerTest {
         Map<String,String> mapURL = new HashMap<>();
         mapURL.put("dep","150");
         mapURL.put("arr","153");
-        BusStations bus = rest.getForObject("/api/direct?dep_sid={dep}&arr_sid={arr}", BusStations.class,mapURL);
+        BusStations bus = rest.getForObject("/direct?dep_sid={dep}&arr_sid={arr}", BusStations.class,mapURL);
         String s = mapper.writeValueAsString(bus);
         System.out.println("forObject = " + s);
         Assert.assertTrue(bus.getDirectBusRoute());
@@ -42,7 +42,7 @@ public class DirectRouteControllerTest {
         Map<String,String> mapURL = new HashMap<>();
         mapURL.put("dep","150");
         mapURL.put("arr","777");
-        BusStations busStations = rest.getForObject("/api/direct?dep_sid={dep}&arr_sid={arr}", BusStations.class,mapURL);
+        BusStations busStations = rest.getForObject("/direct?dep_sid={dep}&arr_sid={arr}", BusStations.class,mapURL);
         Assert.assertTrue(!busStations.getDirectBusRoute());
     }
 

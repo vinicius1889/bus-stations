@@ -21,6 +21,8 @@ public class RouteService {
     private String success;
     @Value("${route.message.error}")
     private String error;
+    @Value("${route.message.hystrix}")
+    private String errorHystrix;
 
     RouteService(StationService stationService,
                  @Qualifier("getRoutesIMDG")  IMap<String,String> routesMap) {
@@ -69,6 +71,15 @@ public class RouteService {
                                 .routeId(null)
                                 .direction(msg)
                                 .build();
+    }
+    public BusStationShortRoute createBusStationShortErrorByHystrix(String departure,String arrival){
+        return BusStationShortRoute.builder()
+                .departure(departure)
+                .arrival(arrival)
+                .routeId(null)
+                .direction(errorHystrix)
+                .build();
+
     }
 
     private BusStationShortRoute createBusStationShortSuccess(

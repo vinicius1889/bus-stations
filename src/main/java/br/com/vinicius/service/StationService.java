@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 public class StationService {
@@ -26,6 +27,17 @@ public class StationService {
                                 arrival,
                                 isThereAnyIntersectionAmoungRoutes(routeA,routeB));
 
+    }
+
+
+    public Set<String> getIntersectionRoutes(String departure, String arrival){
+        if(!imdg.containsKey(departure) || !imdg.containsKey(arrival))
+            return null;
+        Set<String> routeA = imdg.get(departure);
+        Set<String> routeB = imdg.get(arrival);
+        if(isThereAnyIntersectionAmoungRoutes(routeA,routeB))
+            return routeA.stream().filter(s->routeB.contains(s)).collect(Collectors.toSet());
+        return null;
     }
 
     private boolean isThereAnyIntersectionAmoungRoutes(Set<String> routeA, Set<String> routeB){

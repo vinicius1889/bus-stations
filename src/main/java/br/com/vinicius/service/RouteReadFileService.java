@@ -9,26 +9,24 @@ import org.springframework.stereotype.Service;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
-public class StationReadFileService  implements IReadFile{
-
+public class RouteReadFileService  implements IReadFile {
     @Autowired
-    @Qualifier("getStationIMDG")
-    private IMap<String,Set<String>> stationsMap;
+    @Qualifier("getRoutesIMDG")
+    private IMap<String,String> routesMap;
 
     public void readStringFromFile(String line){
         String[] split = line.trim().split(" ");
         if(split.length<4)
             return;
         String routeId = split[0];
-        Arrays.stream(split).skip(1).forEach( v ->{
-            if(!stationsMap.containsKey(v))
-                stationsMap.put(v, new HashSet<>());
-
-            Set<String> strings = stationsMap.get(v);
-            strings.add(routeId);
-            stationsMap.put(v,strings);
-        });
+        String newLineWithoutRouteId = Arrays.stream(line.split(" "))
+                                            .skip(1)
+                                            .collect(Collectors.joining(" "));
+        routesMap.put(routeId,newLineWithoutRouteId);
     }
+
+
 }

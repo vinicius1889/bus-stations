@@ -21,13 +21,16 @@ public class StartupFile {
 
 
     private final IMap<String,String> imdg;
-    private final StationReadFileService service;
+    private final StationReadFileService stationService;
+    private final RouteReadFileService   routeService;
 
     StartupFile(@Qualifier("getConfigIMDG") IMap<String,String> instance,
-                StationReadFileService service
+                StationReadFileService service,
+                RouteReadFileService routeService
                 ){
         this.imdg = instance;
-        this.service = service;
+        this.stationService = service;
+        this.routeService = routeService;
     }
 
 
@@ -39,7 +42,8 @@ public class StartupFile {
     private void setAllStateInformation() throws IOException {
         Stream<String> lines = Files.newBufferedReader(Paths.get(address)).lines();
         lines.forEach(s->{
-            service.setStations(s);
+            stationService.readStringFromFile(s);
+            routeService.readStringFromFile(s);
         });
         imdg.put("hash",this.getMD5());
     }

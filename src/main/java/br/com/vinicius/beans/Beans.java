@@ -23,5 +23,10 @@ public class Beans {
         return Hazelcast.newHazelcastInstance().getMap(EnumsHazelcastMaps.STATIONS.toString());
     }
 
+    @Bean
+    public IMap<String,String> getRoutesIMDG(){
+        return Hazelcast.newHazelcastInstance().getMap(EnumsHazelcastMaps.ROUTES.toString());
+    }
+
 
 }

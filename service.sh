@@ -8,7 +8,7 @@ dev_build() {
 }
 
 dev_run() {
-    java -jar build/libs/demo-0.0.1-SNAPSHOT.jar --server.port=8090 $*
+    java -jar build/libs/demo-0.0.1-SNAPSHOT.jar --server.port=8088 $*
 }
 
 dev_smoke() {

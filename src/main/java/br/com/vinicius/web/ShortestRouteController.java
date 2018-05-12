@@ -14,16 +14,16 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/short")
 @Api(value="Shortly Route Services", description = "Show direct shortly routes")
-public class ShortlyRouteController {
+public class ShortestRouteController {
 
     private final  RouteService service;
 
-    public ShortlyRouteController(RouteService service){
+    public ShortestRouteController(RouteService service){
         this.service = service;
     }
 
     @GetMapping("")
-    @ApiOperation(value = "Service that verify all short routes. I still using String just because we don't use the identifications for any calculations.")
+    @ApiOperation(value = "Service that verify all shortest routes. I still using String just because we don't use the identifications for any calculations.")
     public BusStationShortRoute verify(@RequestParam("dep_sid") String departure,
                                        @RequestParam("arr_sid") String arrival){
         return service.verifyStationRoute(departure,arrival);
